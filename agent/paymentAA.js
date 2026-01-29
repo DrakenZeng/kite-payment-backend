@@ -9,11 +9,11 @@ const { GokiteAASDK } = pkg; // 取需要的类
 export async function sendPayment({ sdk, wallet, accountAddress }) {
   const ownerAddress = await wallet.getAddress();
 
-  // 使用批量交易格式 (SDK 的 prependAddSupportedToken 对单笔格式有 bug)
+  // 使用单笔交易格式
   const txRequest = {
-    targets: ["0x103034dbd47AfaeF830Df2F9147a05149992377d"],
-    values: ["100000000000000"], // 0.0001 ETH
-    callDatas: ["0x"]
+    target: "0x103034dbd47AfaeF830Df2F9147a05149992377d",
+    value: "100000000000000", // 0.0001 ETH
+    callData: "0x"
   };
 
   // 签名函数：SDK 传递 userOpHash，需要签名后返回
